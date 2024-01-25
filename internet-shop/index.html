@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Internet Shop</title>
+		<link rel="stylesheet" href="style/normalize.css">
+    <link rel="stylesheet" href="style/style.css">
+	</head>
+	<body>
+    <section class="wrapper">
+      <h1 class="title">Корзина</h1>
+      <div class="busket__container">
+        <div class="busket__item">
+          <div class="busket__item-img-container">
+            <img class="busket__item-img" src="assets/img/coat.jpg" alt="пальто">
+          </div>
+          <div class="busket__item-description">
+            <p class="busket__item-title">ПАЛЬТО MEDEA ИЗ 100% МЕРИНОСОВОЙ ШЕРСТИ</p>
+            <p class="busket__item-article">Артикул: 121075</p>
+            <div class="busket__item-color-container">
+              <img class="busket__item-color-img" src="assets/img/blue.svg" alt="синий цвет">
+              <span class="busket__item-color-title">Синий</span>
+            </div>
+
+            <select class="busket__item-size" name="size" id="size">
+              <option value="XS">XS</option>
+              <option value="S" selected>S</option>
+              <option value="M">M</option>
+              <option value="L">L</option>
+            </select>
+          </div>
+
+          <div class="busket__item-price-wrapper">
+            <img class="busket__item-delete" src="assets/img/delete-icon.svg" alt="удалить">
+
+            <div class="busket__item-qty-container">
+              <label class="busket__item-qty-title" for="qty">Количество</label>
+              <input class="busket__item-qty" type="number" id="qty" value="1" step="1" min="1">
+            </div>
+
+            <div class="busket__item-price-container">
+              <div class="busket__item-price-discounted"><span id="item-price-discounted">17000</span><span>₽</span></div>
+              <div class="busket__item-price"><span id="item-price">27000</span><span>₽</span></div>
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+
+    </section>
+
+		<script src="script.js"></script>
+	</body>
+</html>

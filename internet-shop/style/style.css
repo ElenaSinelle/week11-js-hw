@@ -1,0 +1,113 @@
+@font-face {
+  font-family: 'Bel';
+  src: url('../assets/fonts/BellotaText-Regular.ttf');
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  font: normal normal 20px/24px Bel, sans-serif;
+  color: rgb(77, 77, 79);
+}
+
+.wrapper {
+  max-width: 80%;
+  margin: 0 auto;
+}
+.title {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.busket__container {
+
+}
+
+.busket__item {
+  display: grid;
+  grid-template-columns: 1fr 7fr 1.8fr;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgb(186, 186, 188);
+}
+
+.busket__item-img {
+  width: 10rem;
+  height: auto;
+}
+
+.busket__item-description {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding-left: 2rem;
+}
+
+.busket__item-title {
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.busket__item-article,
+.busket__item-color-title,
+.busket__item-size,
+.busket__item-qty-title,
+.busket__item-qty,
+.busket__item-price-container {
+  font-size: 1.1rem;
+}
+
+.busket__item-color-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.busket__item-color-img {
+  width: 1.5rem;
+  height: auto;
+}
+
+.busket__item-size {
+  width: 5.8rem;
+  cursor: pointer;
+}
+
+.busket__item-price-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  align-items: flex-end;
+}
+
+.busket__item-delete {
+  width: 1rem;
+  height: auto;
+  margin-bottom: 3rem;
+  cursor: pointer;
+}
+
+.busket__item-qty-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.busket__item-qty {
+  width: 2.5rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.busket__item-price-container {
+  display: flex;
+  gap: 2rem;
+
+}
+
+.busket__item-price-discounted,
+.busket__item-price {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
