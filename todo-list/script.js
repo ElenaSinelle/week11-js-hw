@@ -21,6 +21,8 @@ function doneEverything() {
 
   if (doneResult === itemsArr.length) {
     result.textContent = "Great! Your have done everything for today!!!"
+  } else {
+    result.textContent = null;
   }
 }
 
