@@ -11,103 +11,215 @@ body {
 }
 
 .wrapper {
-  max-width: 80%;
+  max-width: 75%;
   margin: 0 auto;
 }
-.title {
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
+.logo {
+  width: 10rem;
+}
+.title {
+  font-size: 2.3rem;
+}
 
-.busket__container {
+.basket__container {
 
 }
 
-.busket__item {
+.basket__item {
   display: grid;
   grid-template-columns: 1fr 7fr 1.8fr;
   padding-top: 1rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid rgb(186, 186, 188);
 }
+.basket__item:last-child {
+  border-bottom: none;
+}
 
-.busket__item-img {
+.basket__item-img {
   width: 10rem;
   height: auto;
 }
 
-.busket__item-description {
+.basket__item-description {
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
   padding-left: 2rem;
 }
 
-.busket__item-title {
+.basket__item-title {
   text-transform: uppercase;
   font-weight: 600;
 }
 
-.busket__item-article,
-.busket__item-color-title,
-.busket__item-size,
-.busket__item-qty-title,
-.busket__item-qty,
-.busket__item-price-container {
+.basket__item-article,
+.basket__item-color-title,
+.basket__item-size,
+.basket__item-qty-title,
+.basket__item-qty,
+.basket__item-price-container {
   font-size: 1.1rem;
 }
 
-.busket__item-color-container {
+.basket__item-color-container {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-.busket__item-color-img {
+.basket__item-color-img {
   width: 1.5rem;
   height: auto;
 }
 
-.busket__item-size {
+.basket__item-size {
   width: 5.8rem;
   cursor: pointer;
 }
 
-.busket__item-price-wrapper {
+.basket__item-price-wrapper {
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
   align-items: flex-end;
 }
 
-.busket__item-delete {
+.basket__item-delete {
   width: 1rem;
   height: auto;
   margin-bottom: 3rem;
   cursor: pointer;
+  transition: all 0.7s ease;
 }
 
-.busket__item-qty-container {
+.basket__item-delete:hover {
+  transform: rotate(180deg);
+}
+
+.basket__item-qty-container {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-.busket__item-qty {
+.basket__item-qty {
   width: 2.5rem;
   text-align: center;
   cursor: pointer;
 }
 
-.busket__item-price-container {
+.basket__item-price-container {
   display: flex;
   gap: 2rem;
-
 }
 
-.busket__item-price-discounted,
-.busket__item-price {
+/*footer promo container*/
+.basket__footer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.basket__footer-promo-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-right: 4rem;
+}
+
+.basket__footer-promo,
+.basket__footer-cert {
+  display: grid;
+  grid-template-columns: 25% repeat(2, 1fr);
+  grid-template-areas:
+              'title input button'
+              'hint hint hint';
+  column-gap: 1rem;
+  row-gap: 0.2rem;
+  align-items: center;
+}
+
+.basket__footer-promo-title,
+.basket__footer-cert-title {
+  grid-area: title;
+}
+
+.basket__footer-promo-input,
+.basket__footer-cert-input {
+  grid-area: input;
+  height: 2.5rem;
+}
+
+.basket__footer-promo-btn,
+.basket__footer-cert-btn {
+  grid-area: button;
+  height: 2.5rem;
+  background-color: rgb(77, 77, 79);
+  color: rgb(218, 218, 219);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.7s ease;
+}
+
+.basket__footer-promo-btn:hover,
+.basket__footer-cert-btn:hover {
+  transform: scale(0.93);
+}
+
+.basket__footer-promo-hint,
+.basket__footer-cert-hint {
+  grid-area: hint;
+  font-size: 1rem;
+}
+
+/*footer total container */
+.basket__footer-total-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.basket__footer-promo-discount-container,
+.basket__footer-cert-discount-container,
+.basket__footer-total-price-container {
   display: flex;
   align-items: center;
-  gap: 0.3rem;
+  justify-content: space-between;
+
+}
+.basket__footer-total-price-container {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.basket__footer-price-container {
+  display: flex;
+  gap: 2rem;
+}
+
+.order-btn {
+  height: 2.5rem;
+  background-color: rgb(77, 77, 79);
+  color: rgb(218, 218, 219);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.7s ease;
+}
+
+.order-btn:hover {
+  transform: scale(0.93);
+}
+
+.crossed {
+  text-decoration: line-through;
 }

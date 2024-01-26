@@ -7,24 +7,30 @@
 		<title>Internet Shop</title>
 		<link rel="stylesheet" href="style/normalize.css">
     <link rel="stylesheet" href="style/style.css">
+    <link rel="shortcut icon" href="assets/img/icons/favicon.jpg" type="image/jpg">
 	</head>
 	<body>
-    <section class="wrapper">
-      <h1 class="title">Корзина</h1>
-      <div class="busket__container">
-        <div class="busket__item">
-          <div class="busket__item-img-container">
-            <img class="busket__item-img" src="assets/img/coat.jpg" alt="пальто">
+    <header class="header wrapper">
+      <h1 class="title">Корзина (<span class="qty-in-basket"></span>)</h1>
+      <img class="logo" src="assets/img/icons/logo.jpg" alt="лошотип">
+    </header>
+    <main class="wrapper">
+      <div class="basket__container">
+
+        <!-- busket item 1 -->
+        <div class="basket__item">
+          <div class="basket__item-img-container">
+            <img class="basket__item-img" src="assets/img/items/coat.jpg" alt="пальто">
           </div>
-          <div class="busket__item-description">
-            <p class="busket__item-title">ПАЛЬТО MEDEA ИЗ 100% МЕРИНОСОВОЙ ШЕРСТИ</p>
-            <p class="busket__item-article">Артикул: 121075</p>
-            <div class="busket__item-color-container">
-              <img class="busket__item-color-img" src="assets/img/blue.svg" alt="синий цвет">
-              <span class="busket__item-color-title">Синий</span>
+          <div class="basket__item-description">
+            <p class="basket__item-title">ПАЛЬТО MEDEA ИЗ 100% МЕРИНОСОВОЙ ШЕРСТИ</p>
+            <p class="basket__item-article">Артикул: 121075</p>
+            <div class="basket__item-color-container">
+              <img class="basket__item-color-img" src="assets/img/icons/milky.svg" alt="молочный цвет">
+              <span class="basket__item-color-title">Молочный</span>
             </div>
 
-            <select class="busket__item-size" name="size" id="size">
+            <select class="basket__item-size" name="size" id="size">
               <option value="XS">XS</option>
               <option value="S" selected>S</option>
               <option value="M">M</option>
@@ -32,26 +38,212 @@
             </select>
           </div>
 
-          <div class="busket__item-price-wrapper">
-            <img class="busket__item-delete" src="assets/img/delete-icon.svg" alt="удалить">
+          <div class="basket__item-price-wrapper">
+            <img class="basket__item-delete" src="assets/img/icons/delete-icon.svg" alt="удалить">
 
-            <div class="busket__item-qty-container">
-              <label class="busket__item-qty-title" for="qty">Количество</label>
-              <input class="busket__item-qty" type="number" id="qty" value="1" step="1" min="1">
+            <div class="basket__item-qty-container">
+              <label class="basket__item-qty-title" for="qty">Количество</label>
+              <input class="basket__item-qty" type="number" id="qty" value="1" step="1" min="1">
             </div>
 
-            <div class="busket__item-price-container">
-              <div class="busket__item-price-discounted"><span id="item-price-discounted">17000</span><span>₽</span></div>
-              <div class="busket__item-price"><span id="item-price">27000</span><span>₽</span></div>
+            <div class="basket__item-price-container">
+              <div class="basket__item-price-discounted" id="item-price-discounted">14000 ₽</div>
+              <div class="basket__item-price crossed" id="item-price">17000 ₽</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- basket item 2 -->
+        <div class="basket__item">
+          <div class="basket__item-img-container">
+            <img class="basket__item-img" src="assets/img/items/jumper.jpg" alt="джемпер">
+          </div>
+          <div class="basket__item-description">
+            <p class="basket__item-title">ДЖЕМПЕР SKY ИЗ 100% КАШЕМИРА LORO PIANA</p>
+            <p class="basket__item-article">Артикул: 101275</p>
+            <div class="basket__item-color-container">
+              <img class="basket__item-color-img" src="assets/img/icons/pink.svg" alt="розовый цвет">
+              <span class="basket__item-color-title">Розовый</span>
+            </div>
+
+            <select class="basket__item-size" name="size" id="size">
+              <option value="XS" selected>XS</option>
+              <option value="S">S</option>
+              <option value="M">M</option>
+              <option value="L">L</option>
+            </select>
+          </div>
+
+          <div class="basket__item-price-wrapper">
+            <img class="basket__item-delete" src="assets/img/icons/delete-icon.svg" alt="удалить">
+
+            <div class="basket__item-qty-container">
+              <label class="basket__item-qty-title" for="qty">Количество</label>
+              <input class="basket__item-qty" type="number" id="qty" value="1" step="1" min="1">
+            </div>
+
+            <div class="basket__item-price-container">
+              <div class="basket__item-price-discounted" id="item-price-discounted">14000 ₽</div>
+              <div class="basket__item-price crossed" id="item-price">17000 ₽</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- basket item 3 -->
+        <div class="basket__item">
+          <div class="basket__item-img-container">
+            <img class="basket__item-img" src="assets/img/items/trousers.jpg" alt="брюки">
+          </div>
+          <div class="basket__item-description">
+            <p class="basket__item-title">БРЮКИ MARGARET ИЗ КОСТЮМНОЙ ШЕРСТИ</p>
+            <p class="basket__item-article">Артикул: 116456</p>
+            <div class="basket__item-color-container">
+              <img class="basket__item-color-img" src="assets/img/icons/beige.svg" alt="бежевый цвет">
+              <span class="basket__item-color-title">Бежевый</span>
+            </div>
+
+            <select class="basket__item-size" name="size" id="size">
+              <option value="XS" selected>XS</option>
+              <option value="S">S</option>
+              <option value="M">M</option>
+              <option value="L">L</option>
+            </select>
+          </div>
+
+          <div class="basket__item-price-wrapper">
+            <img class="basket__item-delete" src="assets/img/icons/delete-icon.svg" alt="удалить">
+
+            <div class="basket__item-qty-container">
+              <label class="basket__item-qty-title" for="qty">Количество</label>
+              <input class="basket__item-qty" type="number" id="qty" value="1" step="1" min="1">
+            </div>
+
+            <div class="basket__item-price-container">
+              <div class="basket__item-price-discounted" id="item-price-discounted">14000 ₽</div>
+              <div class="basket__item-price crossed" id="item-price">17000 ₽</div>
             </div>
           </div>
         </div>
 
 
+        <!-- basket item 4 -->
+        <div class="basket__item">
+          <div class="basket__item-img-container">
+            <img class="basket__item-img" src="assets/img/items/jeans.jpg" alt="джинсы">
+          </div>
+          <div class="basket__item-description">
+            <p class="basket__item-title">ДЖИНСЫ CULT WIDE</p>
+            <p class="basket__item-article">Артикул: 116398</p>
+            <div class="basket__item-color-container">
+              <img class="basket__item-color-img" src="assets/img/icons/blue.svg" alt="синий цвет">
+              <span class="basket__item-color-title">Синий</span>
+            </div>
+
+            <select class="basket__item-size" name="size" id="size">
+              <option value="XS">XS</option>
+              <option value="S" selected>S</option>
+              <option value="M">M</option>
+              <option value="L">L</option>
+            </select>
+          </div>
+
+          <div class="basket__item-price-wrapper">
+            <img class="basket__item-delete" src="assets/img/icons/delete-icon.svg" alt="удалить">
+
+            <div class="basket__item-qty-container">
+              <label class="basket__item-qty-title" for="qty">Количество</label>
+              <input class="basket__item-qty" type="number" id="qty" value="1" step="1" min="1">
+            </div>
+
+            <div class="basket__item-price-container">
+              <div class="basket__item-price-discounted" id="item-price-discounted">14000 ₽</div>
+              <div class="basket__item-price crossed" id="item-price">17000 ₽</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- basket item 5 -->
+        <div class="basket__item">
+          <div class="basket__item-img-container">
+            <img class="basket__item-img" src="assets/img/items/shoes.jpg" alt="ботинки">
+          </div>
+          <div class="basket__item-description">
+            <p class="basket__item-title">БОТИНКИ DEMI С НАТУРАЛЬНЫМ МЕХОМ</p>
+            <p class="basket__item-article">Артикул: 143009</p>
+            <div class="basket__item-color-container">
+              <img class="basket__item-color-img" src="assets/img/icons/beige.svg" alt="бежевый цвет">
+              <span class="basket__item-color-title">Бежевый</span>
+            </div>
+
+            <select class="basket__item-size" name="size" id="size">
+              <option value="36" disabled>36</option>
+              <option value="37">37</option>
+              <option value="38" selected>38</option>
+              <option value="39">39</option>
+              <option value="40">40</option>
+              <option value="41">41</option>
+            </select>
+          </div>
+
+          <div class="basket__item-price-wrapper">
+            <img class="basket__item-delete" src="assets/img/icons/delete-icon.svg" alt="удалить">
+
+            <div class="basket__item-qty-container">
+              <label class="basket__item-qty-title" for="qty">Количество</label>
+              <input class="basket__item-qty" type="number" id="qty" value="1" step="1" min="1">
+            </div>
+
+            <div class="basket__item-price-container">
+              <div class="basket__item-price-discounted" id="item-price-discounted">14000 ₽</div>
+              <div class="basket__item-price crossed" id="item-price">17000 ₽</div>
+            </div>
+          </div>
+        </div>
 
       </div>
+<!-- footer container  -->
+      <div class="basket__footer">
+        <div class="basket__footer-promo-container">
+          <div class="basket__footer-promo">
+            <label for="promo" class="basket__footer-promo-title">ПРОМОКОД</label>
+            <input type="text" id="promo" class="basket__footer-promo-input">
+            <button type="button" class="basket__footer-promo-btn">ПРИМЕНИТЬ</button>
+            <p class="basket__footer-promo-hint">Варианты промокодов: скидка10,  скидка20,  скидка30</p>
+          </div>
 
-    </section>
+          <div class="basket__footer-cert">
+            <label for="cert" class="basket__footer-cert-title">СЕРТИФИКАТ</label>
+            <input type="text" id="cert" class="basket__footer-cert-input">
+            <button type="button" class="basket__footer-cert-btn">ПРИМЕНИТЬ</button>
+            <p class="basket__footer-promo-hint">Варианты сертификатов: др15,  др25</p>
+          </div>
+        </div>
+
+        <div class="basket__footer-total-container">
+          <div class="basket__footer-promo-discount-container">
+            <p>СКИДКА ПО ПРОМОКОДУ:</p>
+            <div class="basket__footer-promo-discount">270 ₽</div>
+          </div>
+
+          <div class="basket__footer-cert-discount-container">
+            <p>СКИДКА ПО СЕРТИФИКАТУ:</p>
+            <div class="basket__footer-cert-discount">350 ₽</div>
+          </div>
+
+          <div class="basket__footer-total-price-container">
+            <p>ИТОГО:</p>
+            <div class="basket__footer-price-container">
+              <div class="basket__footer-total-discount">35000 ₽</div>
+            <div class="basket__footer-total-price crossed">47000 ₽</div>
+            </div>
+          </div>
+
+          <button type="button" class="order-btn">ОФОРМИТЬ ЗАКАЗ</button>
+
+        </div>
+      </div>
+
+    </main>
 
 		<script src="script.js"></script>
 	</body>
