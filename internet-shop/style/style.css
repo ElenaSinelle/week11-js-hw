@@ -35,7 +35,7 @@ body {
 
 .basket__item {
   display: grid;
-  grid-template-columns: 1fr 7fr 1.8fr;
+  grid-template-columns: 1fr 7fr 3fr;
   padding-top: 1rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid rgb(186, 186, 188);
@@ -120,6 +120,10 @@ body {
 .basket__item-price-container {
   display: flex;
   gap: 2rem;
+}
+
+.basket__item-price-init {
+  opacity: 0;
 }
 
 /*footer promo container*/
