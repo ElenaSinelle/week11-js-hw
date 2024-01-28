@@ -4,7 +4,14 @@ const qtyArr = [...document.getElementsByClassName('basket__item-qty')];
 const deleteBtnsArr = [...document.getElementsByClassName('basket__item-delete')];
 const itemPriceInitArr = [...document.getElementsByClassName('basket__item-price-init')];
 const itemPriceCalcArr = [...document.getElementsByClassName('basket__item-price')];
+const itemPriceDiscounted = [...document.getElementsByClassName('basket__item-price-discounted')];
 const totalPrice = document.querySelector('.basket__footer-total-price');
+const totalPriceDiscounted = document.querySelector('.basket__footer-total-discounted');
+const promoDiscount = document.querySelector('.basket__footer-promo-discount');
+const certDiscount = document.querySelector('.basket__footer-cert-discount');
+const promoBtn = document.querySelector('.basket__footer-promo-btn');
+const certBtn = document.querySelector('.basket__footer-cert-btn');
+const btnContainer = document.querySelector('.basket__footer-promo-container');
 
 //calculate quantity of items in basket
 function calcQtyInBasket() {
@@ -13,15 +20,40 @@ function calcQtyInBasket() {
   qtyInBasket.textContent = result;
 }
 
+//converting of a num to string
+function numToString(num) {
+  let resultStr = String(num);
+  let resultStrSplit = resultStr.slice(0, -3) + ' ' + resultStr.slice(-3);
+  return resultStrSplit;
+}
+
+//converting of a string to num
+function stringToNum(str) {
+  let strArr = Array.from(str);
+  let numArr = [];
+  strArr.forEach((i) => {
+    if (i == ' ' || i == '₽') {
+      numArr.push('');
+    } else {
+      numArr.push(i);
+    }
+  })
+  let num = +numArr.join('');
+  return num;
+}
+
 //calculate prices of items when the quantity is changed
 function calcPrice() {
-  for (let i=0; i<itemPriceInitArr.length; i++) {
-    for (let j=0; j<qtyArr.length; j++) {
-      if(i == j) {
-        let result = itemPriceInitArr[i].textContent;
-        result = result * +qtyArr[j].value;
+  for (let i = 0; i < itemPriceInitArr.length; i++) {
+    for (let j = 0; j < qtyArr.length; j++) {
+      if (i == j) {
+        let priceNum = itemPriceInitArr[i].textContent * +qtyArr[j].value;
+
+        let priceStr = numToString(priceNum);
+
         let container = itemPriceInitArr[i].closest('.basket__item-price-container');
-        container.querySelector('.basket__item-price').textContent = `${result} ₽`;
+
+        container.querySelector('.basket__item-price').textContent = `${priceStr} ₽`;
       }
     }
   }
@@ -30,11 +62,56 @@ function calcPrice() {
 //calculate total price
 function calcTotalPrice() {
   let result = 0;
-  itemPriceCalcArr.forEach(item => result += parseInt(item.textContent));
-  totalPrice.textContent = `${result} ₽`;
+
+  itemPriceCalcArr.forEach(item => {
+    let num = stringToNum(item.textContent);
+    result += num;
+  });
+
+  totalPrice.textContent = `${numToString(result)} ₽`;
 }
 
+//calculate promo discount
+function calcDiscount(discount) {
+  for (let i = 0; i < itemPriceCalcArr.length; i++) {
+    for (let j = 0; j < qtyArr.length; j++) {
+      if (i == j) {
+        let priceNum = stringToNum(itemPriceCalcArr[i].textContent) * discount;
 
+        let priceStr = numToString(priceNum);
+
+        let container = itemPriceInitArr[i].closest('.basket__item-price-container');
+
+        container.querySelector('.basket__item-price-discounted').textContent = `${priceStr} ₽`;
+        crossOut(itemPriceCalcArr[i]);
+
+      }
+    }
+  }
+}
+
+//calculate discounted total price
+function calcDiscountedTotalPrice(discount) {
+  let totalPriceNum = stringToNum(totalPrice.textContent);
+  let totalPriceDiscountedNum  = totalPriceNum * discount;
+  let discountNum = totalPriceNum - totalPriceDiscountedNum;
+
+  totalPriceDiscounted.textContent = `${numToString(totalPriceDiscountedNum)} ₽`;
+  crossOut(totalPrice);
+
+  if (discount == 0.75) {
+    promoDiscount.textContent =  `${numToString(discountNum)} ₽`;
+    certDiscount.textContent = '';
+  } else  if (discount = 0.85) {
+    certDiscount.textContent =  `${numToString(discountNum)} ₽`;
+    promoDiscount.textContent = '';
+  }
+}
+
+//function crossing old price
+function crossOut(elem) {
+  elem.classList.add('crossed');
+}
 
 
 //event listeners
@@ -47,10 +124,18 @@ qtyArr.forEach(item => item.addEventListener('change', function() {
   calcQtyInBasket();
   calcPrice();
   calcTotalPrice();
-
 }));
 
-
+btnContainer.addEventListener('click', function(e) {
+  if (e.target == promoBtn) {
+    calcDiscount(0.75);
+    calcDiscountedTotalPrice(0.75);
+  }
+  if (e.target == certBtn) {
+    calcDiscount(0.85);
+    calcDiscountedTotalPrice(0.85);
+  }
+});
 
 
 //delete item from the basket
@@ -61,40 +146,3 @@ deleteBtnsArr.forEach(item => item.addEventListener('click', function() {
   calcQtyInBasket();// но не обновляется количество товаров в корзине
   calcTotalPrice(); // и не обновляется общая стоимость в ИТОГО
 }));
-
-
-// const input = document.querySelector('.todo-list__input');
-// const btn = document.querySelector('.todo-list__button');
-// const list = document.querySelector('.todo-list__list');
-// const result =document.querySelector('.todo-list__result');
-
-// function addNewTask() {
-//   const newTask = input.value;
-//   const newLi = document.createElement('li');
-//   newLi.classList.add('todo-list__item');
-//   newLi.textContent = newTask;
-//   list.append(newLi);
-//   input.value = null;
-// }
-
-// function doneEverything() {
-//   let itemsArr = [...list.getElementsByClassName('todo-list__item')];
-//   let doneResult = 0;
-
-//   itemsArr.forEach(element => element.classList.contains('done') ? doneResult++ : doneResult)
-
-//   if (doneResult === itemsArr.length) {
-//     result.textContent = "Great! Your have done everything for today!!!"
-//   } else {
-//     result.textContent = null;
-//   }
-// }
-
-// btn.addEventListener('click', addNewTask);
-
-// list.addEventListener('click', function(event) {
-//   if (event.target.classList.contains('todo-list__item')) {
-//     event.target.classList.toggle('done');
-//   }
-//   doneEverything();
-// });
