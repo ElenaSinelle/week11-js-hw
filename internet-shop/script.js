@@ -124,17 +124,44 @@ function calcDiscountedTotalPrice(discount) {
   if (discount == 0.75) {
     promoDiscount.textContent =  `${numToString(discountNum)} ₽`;
     certDiscount.textContent = '';
-  } else  if (discount = 0.85) {
+  } else  if (discount == 0.85) {
     certDiscount.textContent =  `${numToString(discountNum)} ₽`;
     promoDiscount.textContent = '';
   }
-
 }
+
+//calculate discounted total price on deletion of an item from the basket
+function calcDiscountedTotalPriceOnDeletion() {
+  let itemPriceDiscountedArr = [...document.querySelectorAll('.basket__item-price-discounted')];
+  let itemPriceCalcArr = [...document.getElementsByClassName('basket__item-price')];
+
+  let totalPriceDiscountedNum = itemPriceDiscountedArr.reduce((sum, current) => sum + stringToNum(current.textContent), 0);
+  let totalPriceNum = stringToNum(totalPrice.textContent);
+  let discountNum = totalPriceNum - totalPriceDiscountedNum;
+
+  totalPriceDiscounted.textContent = `${numToString(totalPriceDiscountedNum)} ₽`;
+  crossOut(totalPrice);
+
+  const discount = stringToNum(itemPriceDiscountedArr[0].textContent) / stringToNum(itemPriceCalcArr[0].textContent);
+  console.log(discount);
+
+  if (discount == 0.75) {
+    promoDiscount.textContent =  `${numToString(discountNum)} ₽`;
+    certDiscount.textContent = '';
+  } else  if (discount == 0.85) {
+    certDiscount.textContent =  `${numToString(discountNum)} ₽`;
+    promoDiscount.textContent = '';
+  }
+}
+
+
+
 
 //function crossing old price
 function crossOut(elem) {
   elem.classList.add('crossed');
 }
+
 
 
 //event listeners
@@ -182,4 +209,16 @@ deleteBtnsArr.forEach(item => item.addEventListener('click', function() {
   calcQtyInBasket();
   calcPrice();
   calcTotalPrice();
+  calcDiscountedTotalPriceOnDeletion();
 }));
+
+
+// let discounts = [
+//   {'скидка10': 0.9},
+//   {'скидка20': 0.8},
+//   {'скидка30': 0.7},
+//   {'др15': 0.85},
+//   {'др25': 0.75},
+// ];
+
+// input.value == discounts
